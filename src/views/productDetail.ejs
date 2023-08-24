@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- aca podes concatenar porque es una etiqueta ejs o sea js -->
+<%- include('partials/head', {
+    title : 'Producto: ' + product.name
+  })%>
+
+    <body class="login">
+        <%- include('partials/header')%>
+
+            <main class="container">
+                <div class="row mt-5">
+                    <div class="col-12 col-md-10 mx-auto">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <h3>Producto: <%= product.name %></h3>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-12 col-md-4">
+                                        <img src="/images/<%= product.image %>" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="col-12 col-md-8">
+                                        <h2>U$S <%= product.price %></h2>
+                                        <p><%= product.description %></p>
+                                        <button type="button" class="btn btn-dark">Comprar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+    </body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- aca podes concatenar porque es una etiqueta ejs o sea js -->
+<%- include('partials/head', { 
+        title : 'Nuevo producto' 
+    })%>
+
+    <body class="login">
+        <%- include('partials/header')%>
+
+            <main class="container">
+                <div class="row mt-5">
+                    <div class="col-12 col-lg-8 mx-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-header">
+                                    <h4 class="card-title">Nuevo Producto</h4>
+                                </div>
+                                <div class="card-body">
+                                    <!-- el method de formularios tiene que ir por POST porque es informacion sensible -->
+                                    <!-- cuando no le pones algo al action te lo envia a la misma ruta con la que renderizaste el form-->
+                                    <form action="" method="POST" class="row">
+
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                                            <!-- importante agregar atributo (name="") de lo contrario no viaja -->
+                                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nombre del producto" name="name">
+                                          </div>
+                                          <div class="col-12 col-md-6 mb-3">
+                                            <label for="formGroupExampleInput2" class="form-label">Marca</label>
+                                            <!-- hidden oculta una vez que seleccionas otra opcion -->
+                                            <select class="form-select" aria-label="Default select example" name="brand">
+                                                <option selected hidden value="">Seleccione...</option>
+                                                <% brands.forEach(brand => { %>
+                                                 <!-- value(valor): es lo que se guarda y lo que se muestra en la interface-->
+                                                 <!-- poner entre comillas asi te guarda todas las palabras y no solo una -->
+                                                  <option value="<%= brand.name %>"><%= brand.name%></option>
+
+                                                <% }) %>
+                                                
+                                              </select>
+                                          </div>
+                                          <div class="col-12 col-md-6 mb-3">
+                                            <!-- el for con el id tiene que coincidir -->
+                                            <label for="price" class="form-label">Precio</label>
+                                            <input type="number" class="form-control" id="price" name="price">
+                                          </div>
+                                          <div class="col-12 col-md-6 mb-3">
+                                            <label for="discount" class="form-label">Descuento</label>
+                                            <input type="number" class="form-control" id="discount" name="discount">
+                                          </div>
+                                          
+                                          <div class="col-12 mb-3">
+                                            <label for="description" class="form-label">Descripcion</label>
+                                            <textarea class="form-control" style="resize: none" name="description" id="description"></textarea>
+                                          </div>
+                                          <div class="col-12 d-flex justify-content-end gap-2 mb-3">
+                                            <label for="image" class="btn btn-secondary">Agregar imagen</label>
+                                            <!-- input oculto -->
+                                            <input hidden class="form-control" type="file" id="image">
+                                            <button class="btn btn-dark" type="submit">Guardar cambios</button>
+                                          </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+    </body>
+
+</html>
